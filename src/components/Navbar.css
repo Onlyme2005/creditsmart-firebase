@@ -22,14 +22,14 @@
     
     }
     .brand-text {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     text-decoration: none !important;
     }
 
     .brand-icon {
     display: flex;
-    font-size:2rem; /* tamaño del icono */
+    font-size:2.5rem; /* tamaño del icono */
     color: #639ee8;    /* dorado / color moneda */
     }
 

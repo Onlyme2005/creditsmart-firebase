@@ -11,21 +11,30 @@
             <p className="credit-description">{credit.description}</p>
             
             <div className="credit-details">
+            <div className="details-grid">
             <div className="interest-rate">
                 <span className="rate-label">Tasa de interés:</span>
                 <span className="rate-value">{credit.interestRate}% anual</span>
             </div>
             
             <div className="amount-range">
-                <span className="amount-label">Monto disponible:</span>
-                <span className="amount-value">
-    ${credit.minAmount?.toLocaleString() || 'N/A'} - ${credit.maxAmount?.toLocaleString() || 'N/A'}
-</span>
+                <span className="label">Monto</span>
+                <span className="value" >
+                    ${credit.minAmount?.toLocaleString()}
+                </span>
             </div>
-            
+
+            <div className="amount-range">
+                <span className="label">disponible:</span>
+                <span className="value">
+                    ${credit.maxAmount?.toLocaleString()}
+                </span>
+            </div>
+                
             <div className="term">
                 <span className="term-label">Plazo máximo:</span>
                 <span className="term-value">{credit.maxTerm} meses</span>
+            </div>
             </div>
             </div>
             

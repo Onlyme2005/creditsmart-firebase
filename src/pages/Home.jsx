@@ -49,12 +49,12 @@ const Home = () => {
     );
   }
 
-  return (
-    <div className="home-container">
-      <section class ="banner">
+      return (
+        <div className="home-container">
+          <section className="banner">
             <h2>Encuentra el crédito ideal para ti</h2>
             <p>Compara y solicita entre más de 5 tipos de crédito con las mejores tasas del mercado</p>
-        </section>
+          </section>
       
       <div className="credits-grid">
         {credits.map((credit) => (
