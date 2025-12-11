@@ -88,7 +88,7 @@ const AddCredit = () => {
         image: ''
       });
 
-      // Ocultar mensaje de éxito después de 5 segundos
+      // Ocultar mensaje de éxito  después de 5 segundos
       setTimeout(() => {
         setSuccess(false);
       }, 5000);
