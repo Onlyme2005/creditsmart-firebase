@@ -18,8 +18,7 @@ const Simulator = () => {
     interest: false,
     sort: false
   });
-  
-  // Cargar créditos desde Firebase
+
   useEffect(() => {
     const fetchCredits = async () => {
       try {
@@ -27,8 +26,7 @@ const Simulator = () => {
         const creditsData = await creditService.getAllCredits();
         setCredits(creditsData);
         setError(null);
-        
-        // Calcular tasa de interés máxima disponible
+
         if (creditsData.length > 0) {
           const maxInterest = Math.max(...creditsData.map(c => Number(c.interestRate) || 0));
           setInterestRange(maxInterest);
@@ -44,7 +42,6 @@ const Simulator = () => {
     fetchCredits();
   }, []);
 
-  // Actualizar estado de filtros activos
   useEffect(() => {
     const newActiveFilters = {
       search: searchTerm.length > 0,
@@ -55,29 +52,25 @@ const Simulator = () => {
     setActiveFilters(newActiveFilters);
   }, [searchTerm, amountRange, interestRange, sortByInterest]);
 
-  // Aplicar filtros cuando cambien los criterios
   useEffect(() => {
     if (!credits.length) return;
 
     let filtered = credits.filter(credit => {
-      // Filtro por búsqueda de nombre
       const matchesSearch = credit.name.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      // Filtro por monto máximo
+
       const minAmount = Number(credit.minAmount) || 0;
       const maxAmount = Number(credit.maxAmount) || Infinity;
-      const matchesAmount = amountRange === 1000000 || 
+      const matchesAmount =
+        amountRange === 1000000 ||
         (minAmount <= amountRange && maxAmount >= amountRange);
-      
-      // Filtro por tasa de interés máxima
+
       const creditInterestRate = Number(credit.interestRate) || 0;
-      const matchesInterest = interestRange === 0 || 
-        creditInterestRate <= interestRange;
-      
+      const matchesInterest =
+        interestRange === 0 || creditInterestRate <= interestRange;
+
       return matchesSearch && matchesAmount && matchesInterest;
     });
 
-    // Ordenar si es necesario
     if (sortByInterest) {
       filtered.sort((a, b) => {
         const rateA = Number(a.interestRate) || 0;
@@ -89,8 +82,7 @@ const Simulator = () => {
     setFilteredCredits(filtered);
   }, [credits, searchTerm, amountRange, interestRange, sortByInterest]);
 
-  // Calcular valores mínimos y máximos para los sliders
-  const maxAmountInCredits = credits.length > 0 
+  const maxAmountInCredits = credits.length > 0
     ? Math.max(...credits.map(c => Number(c.maxAmount) || 0))
     : 500000000;
 
@@ -106,7 +98,6 @@ const Simulator = () => {
     ? Math.min(...credits.map(c => Number(c.interestRate) || 0))
     : 0;
 
-  // Limpiar todos los filtros
   const clearAllFilters = () => {
     setSearchTerm('');
     setAmountRange(1000000);
@@ -114,7 +105,6 @@ const Simulator = () => {
     setSortByInterest(false);
   };
 
-  // Contar filtros activos
   const activeFilterCount = Object.values(activeFilters).filter(Boolean).length;
 
   if (loading) {
@@ -147,57 +137,14 @@ const Simulator = () => {
   return (
     <div className="simulator-container">
       <header className="simulator-header">
-        <h1>🔍 Simulador de Crédito</h1>
+        <h1>SIMULADOR DE CRÉDITO</h1>
         <p>Encuentra y compara las mejores opciones</p>
-        
       </header>
-      
-      {/* Resumen de filtros activos */}
-      {activeFilterCount > 0 && (
-        <div className="active-filters-summary">
-          <div className="filters-summary-header">
-            <h4>🎯 Filtros activos ({activeFilterCount})</h4>
-            <button 
-              onClick={clearAllFilters}
-              className="clear-all-filters-btn"
-            >
-              🗑️ Limpiar todos
-            </button>
-          </div>
-          <div className="active-filters-list">
-            {activeFilters.search && (
-              <span className="active-filter-tag">
-                🔍 Buscando: "{searchTerm}"
-                <button onClick={() => setSearchTerm('')}>✕</button>
-              </span>
-            )}
-            {activeFilters.amount && (
-              <span className="active-filter-tag">
-                💰 Monto máximo: ${amountRange.toLocaleString()}
-                <button onClick={() => setAmountRange(1000000)}>✕</button>
-              </span>
-            )}
-            {activeFilters.interest && (
-              <span className="active-filter-tag">
-                📈 Tasa máxima: {interestRange}%
-                <button onClick={() => setInterestRange(maxInterestInCredits)}>✕</button>
-              </span>
-            )}
-            {activeFilters.sort && (
-              <span className="active-filter-tag">
-                📊 Ordenado por tasa
-                <button onClick={() => setSortByInterest(false)}>✕</button>
-              </span>
-            )}
-          </div>
-        </div>
-      )}
 
-      {/* Filtros y Búsqueda */}
+      {/* Filtros y búsqueda */}
       <div className="filters-section">
-        {/* Búsqueda por nombre */}
+
         <div className="search-box">
-          <div className="search-icon">🔍</div>
           <input
             type="text"
             placeholder="Buscar por nombre de crédito..."
@@ -206,7 +153,7 @@ const Simulator = () => {
             className="search-input"
           />
           {searchTerm && (
-            <button 
+            <button
               className="clear-search"
               onClick={() => setSearchTerm('')}
               title="Limpiar búsqueda"
@@ -215,14 +162,12 @@ const Simulator = () => {
             </button>
           )}
         </div>
-        
-        {/* Filtros principales */}
+
         <div className="filters-main">
-          {/* Filtro por monto */}
           <div className="filter-group">
             <div className="filter-header">
               <label htmlFor="amountRange">
-                💰 Filtrar por monto máximo
+                Filtrar por monto máximo
               </label>
               <span className="filter-value">${amountRange.toLocaleString()}</span>
             </div>
@@ -239,11 +184,11 @@ const Simulator = () => {
               />
               <div className="slider-labels">
                 <span>${minAmountInCredits.toLocaleString()}</span>
-                <span>${maxAmountInCredits.toLocaleString()}</span>
+                <span> - ${maxAmountInCredits.toLocaleString()}</span>
               </div>
             </div>
             <div className="slider-actions">
-              <button 
+              <button
                 className="reset-slider-btn"
                 onClick={() => setAmountRange(1000000)}
                 disabled={amountRange === 1000000}
@@ -253,11 +198,10 @@ const Simulator = () => {
             </div>
           </div>
 
-          {/* Filtro por tasa de interés - NUEVO */}
           <div className="filter-group">
             <div className="filter-header">
               <label htmlFor="interestRange">
-                📈 Filtrar por tasa de interés máxima
+                Filtrar por tasa de interés máxima
               </label>
               <span className="filter-value">{interestRange}%</span>
             </div>
@@ -267,18 +211,18 @@ const Simulator = () => {
                 id="interestRange"
                 min={minInterestInCredits}
                 max={maxInterestInCredits}
-                step="0.5"
+                step="1"
                 value={interestRange}
                 onChange={(e) => setInterestRange(Number(e.target.value))}
                 className="interest-slider"
               />
               <div className="slider-labels">
-                <span>{minInterestInCredits}%</span>
+                <span>{minInterestInCredits}% - </span>
                 <span>{maxInterestInCredits}%</span>
               </div>
             </div>
             <div className="slider-actions">
-              <button 
+              <button
                 className="reset-slider-btn"
                 onClick={() => setInterestRange(maxInterestInCredits)}
                 disabled={interestRange === maxInterestInCredits}
@@ -293,7 +237,6 @@ const Simulator = () => {
           </div>
         </div>
 
-        {/* Opciones de ordenamiento */}
         <div className="sorting-section">
           <div className="sort-options">
             <div className="sort-checkbox">
@@ -305,15 +248,11 @@ const Simulator = () => {
                   className="sort-checkbox-input"
                 />
                 <span className=""></span>
-                📊 Ordenar por tasa de interés (menor a mayor)
+                Ordenar por tasa de interés (menor a mayor)
               </label>
-              <div className="sort-info">
-                {sortByInterest ? "Orden ascendente por tasa" : "Orden predeterminado"}
-              </div>
             </div>
           </div>
 
-          {/* Estadísticas de filtrado */}
           <div className="filter-stats">
             <div className="stat-item">
               <span className="stat-label">Productos totales:</span>
@@ -326,7 +265,7 @@ const Simulator = () => {
             <div className="stat-item">
               <span className="stat-label">Tasa promedio:</span>
               <span className="stat-value avg">
-                {credits.length > 0 
+                {credits.length > 0
                   ? (credits.reduce((sum, c) => sum + Number(c.interestRate || 0), 0) / credits.length).toFixed(1)
                   : '0.0'
                 }%
@@ -335,63 +274,61 @@ const Simulator = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Resultados */}
       <div className="results-section">
         <div className="results-header">
           <h3>
-            {filteredCredits.length === credits.length 
-              ? "Todos los productos crediticios disponibles" 
+            {filteredCredits.length === credits.length
+              ? "Todos los productos crediticios disponibles"
               : `Resultados filtrados (${filteredCredits.length} de ${credits.length})`
             }
           </h3>
-          
-          {/* Resumen de filtros aplicados */}
+
           <div className="filters-applied-summary">
             {activeFilters.search && (
               <span className="applied-filter">
-                🔍 <strong>{searchTerm}</strong>
+                 <strong>{searchTerm}</strong>
               </span>
             )}
             {activeFilters.amount && (
               <span className="applied-filter">
-                💰 <strong>${amountRange.toLocaleString()}</strong>
+                <strong>${amountRange.toLocaleString()}</strong>
               </span>
             )}
             {activeFilters.interest && (
               <span className="applied-filter">
-                📈 <strong>{interestRange}% tasa máx</strong>
+               <strong>{interestRange}% tasa máx</strong>
               </span>
             )}
             {activeFilters.sort && (
               <span className="applied-filter">
-                📊 <strong>Ordenado por tasa</strong>
+                 <strong>Ordenado por tasa</strong>
               </span>
             )}
           </div>
         </div>
-        
+
         {filteredCredits.length > 0 ? (
           <>
-            {/* Resumen de resultados */}
             <div className="results-summary">
               <div className="summary-grid">
                 <div className="summary-item">
-                  <span className="summary-label">📋 Productos encontrados:</span>
+                  <span className="summary-label"> Productos encontrados:</span>
                   <span className="summary-value">{filteredCredits.length}</span>
                 </div>
                 <div className="summary-item">
-                  <span className="summary-label">💰 Monto máximo filtrado:</span>
+                  <span className="summary-label"> Monto máximo filtrado:</span>
                   <span className="summary-value">${amountRange.toLocaleString()}</span>
                 </div>
                 <div className="summary-item">
-                  <span className="summary-label">📈 Tasa máxima filtrada:</span>
+                  <span className="summary-label"> Tasa máxima filtrada:</span>
                   <span className="summary-value">{interestRange}%</span>
                 </div>
                 <div className="summary-item">
-                  <span className="summary-label">🎯 Tasa promedio:</span>
+                  <span className="summary-label"> Tasa promedio:</span>
                   <span className="summary-value">
-                    {filteredCredits.length > 0 
+                    {filteredCredits.length > 0
                       ? (filteredCredits.reduce((sum, c) => sum + Number(c.interestRate || 0), 0) / filteredCredits.length).toFixed(1)
                       : '0.0'
                     }%
@@ -400,14 +337,12 @@ const Simulator = () => {
               </div>
             </div>
 
-            {/* Grid de créditos */}
             <div className="credits-grid">
               {filteredCredits.map(credit => (
                 <CreditCard key={credit.id} credit={credit} />
               ))}
             </div>
 
-            {/* Resumen final */}
             <div className="final-summary">
               <p>
                 🎯 Mostrando <strong>{filteredCredits.length}</strong> de <strong>{credits.length}</strong> productos crediticios
@@ -417,57 +352,58 @@ const Simulator = () => {
                 {activeFilters.sort && `, ordenados por tasa de interés`}
               </p>
               <div className="summary-actions">
-                <button 
+                <button
                   onClick={clearAllFilters}
                   className="summary-clear-btn"
                 >
-                  🗑️ Limpiar todos los filtros
+                Limpiar todos los filtros
                 </button>
-                <button 
+                <button
                   onClick={() => window.location.reload()}
                   className="summary-refresh-btn"
                 >
-                  🔄 Recargar datos
+                 Recargar datos
                 </button>
               </div>
             </div>
           </>
         ) : (
           <div className="no-results">
-            <div className="no-results-icon">🔍</div>
+            <div className="no-results-icon"></div>
             <h3>No hay créditos disponibles con los filtros aplicados</h3>
             <p>Intenta con otros criterios de búsqueda:</p>
+
             <ul className="suggestions">
-              <li>✅ Usa un término de búsqueda diferente</li>
-              <li>✅ Aumenta el rango de monto máximo</li>
-              <li>✅ Aumenta el rango de tasa de interés</li>
-              <li>✅ Quita algunos filtros para ver todos los productos</li>
+              <li>Usa un término de búsqueda diferente</li>
+              <li>Aumenta el rango de monto máximo</li>
+              <li>Aumenta el rango de tasa de interés</li>
+              <li>Quita algunos filtros para ver todos los productos</li>
             </ul>
+
             <div className="no-results-actions">
-              <button 
+              <button
                 onClick={clearAllFilters}
                 className="reset-filters-btn"
               >
-                🗑️ Limpiar todos los filtros
+                Limpiar todos los filtros
               </button>
-              <button 
+              <button
                 onClick={() => window.location.reload()}
                 className="refresh-btn"
               >
-                🔄 Recargar datos
+                Recargar datos
               </button>
             </div>
-            
-            {/* Sugerencias de filtros */}
+
             <div className="filter-suggestions">
-              <h4>💡 Sugerencias:</h4>
+              <h4>Sugerencias:</h4>
               <div className="suggestion-cards">
                 <div className="suggestion-card">
-                  <div className="suggestion-icon">💰</div>
+                  <div className="suggestion-icon"></div>
                   <div className="suggestion-content">
                     <strong>Prueba con monto máximo:</strong>
                     <p>${maxAmountInCredits.toLocaleString()}</p>
-                    <button 
+                    <button
                       onClick={() => setAmountRange(maxAmountInCredits)}
                       className="suggestion-btn"
                     >
@@ -476,11 +412,11 @@ const Simulator = () => {
                   </div>
                 </div>
                 <div className="suggestion-card">
-                  <div className="suggestion-icon">📈</div>
+                  <div className="suggestion-icon"></div>
                   <div className="suggestion-content">
                     <strong>Prueba con tasa máxima:</strong>
                     <p>{maxInterestInCredits}%</p>
-                    <button 
+                    <button
                       onClick={() => setInterestRange(maxInterestInCredits)}
                       className="suggestion-btn"
                     >
@@ -489,11 +425,11 @@ const Simulator = () => {
                   </div>
                 </div>
                 <div className="suggestion-card">
-                  <div className="suggestion-icon">🔍</div>
+                  <div className="suggestion-icon"></div>
                   <div className="suggestion-content">
                     <strong>Busca por tipo:</strong>
                     <p>"Personal", "Vivienda", "Vehículo"</p>
-                    <button 
+                    <button
                       onClick={() => setSearchTerm('Crédito')}
                       className="suggestion-btn"
                     >
@@ -503,6 +439,7 @@ const Simulator = () => {
                 </div>
               </div>
             </div>
+
           </div>
         )}
       </div>

@@ -161,67 +161,17 @@ const MyApplications = () => {
   return (
     <div className="my-applications-container">
       <header className="my-applications-header">
-        <h1>📋 TODAS las Solicitudes de Crédito</h1>
+        <h1>Todas las Solicitudes de Crédito</h1>
         <p>Consulta y gestiona todas las solicitudes registradas en el sistema</p>
         
       </header>
-
-      {/* Estadísticas generales */}
-      <div className="global-stats-section">
-        <div className="stats-card">
-          <h3>📊 Estadísticas Generales</h3>
-          <div className="stats-grid">
-            <div className="stat-item">
-              <span className="stat-label">Total solicitudes:</span>
-              <span className="stat-value total">{applications.length}</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-label">Solicitantes únicos:</span>
-              <span className="stat-value unique">{uniqueApplicants}</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-label">Pendientes:</span>
-              <span className="stat-value pending">{pendingCount}</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-label">Aprobadas:</span>
-              <span className="stat-value approved">{approvedCount}</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-label">Monto total:</span>
-              <span className="stat-value amount">${totalAmount.toLocaleString()}</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-label">Monto promedio:</span>
-              <span className="stat-value avg">${averageAmount.toLocaleString(undefined, {maximumFractionDigits: 0})}</span>
-            </div>
-          </div>
-          <div className="stats-actions">
-            <button 
-              onClick={refreshData}
-              className="refresh-btn"
-              disabled={loading}
-            >
-              🔄 Actualizar Datos
-            </button>
-           
-          </div>
-        </div>
-      </div>
 
 
       {/* Filtros avanzados */}
       <div className="filters-section">
         <div className="filters-header">
-          <h3>🔧 Filtros Avanzados</h3>
-          <button 
-            onClick={clearAllFilters}
-            className="clear-filters-btn"
-            disabled={!filters.email && !filters.creditType && !filters.minAmount && 
-                      !filters.maxAmount && !filters.status && !searchQuery}
-          >
-            🗑️ Limpiar todos
-          </button>
+          <h3> Filtros Avanzados</h3>
+
         </div>
         
         <div className="filters-grid">
@@ -369,9 +319,9 @@ const MyApplications = () => {
                   <div className="application-body">
                     <div className="application-main-info">
                       <h4 className="applicant-name">{app.fullName}</h4>
-                      <p className="applicant-email">📧 {app.email}</p>
+                      <p className="applicant-email">Correo: {app.email}</p>
                       <div className="credit-type">
-                        <span className="type-icon">💳</span>
+                        <span className="type-icon">Tipo Credito: </span>
                         <span className="type-name">{app.creditType}</span>
                       </div>
                     </div>
@@ -404,15 +354,15 @@ const MyApplications = () => {
                     
                     <div className="application-extra-info">
                       <div className="extra-item">
-                        <span className="extra-label">📱 Teléfono:</span>
+                        <span className="extra-label"> Teléfono:</span>
                         <span className="extra-value">{app.phone || 'No registrado'}</span>
                       </div>
                       <div className="extra-item">
-                        <span className="extra-label">🏢 Empresa:</span>
+                        <span className="extra-label"> Empresa:</span>
                         <span className="extra-value">{app.company || 'No especificada'}</span>
                       </div>
                       <div className="extra-item">
-                        <span className="extra-label">👨‍💼 Cargo:</span>
+                        <span className="extra-label"> Cargo:</span>
                         <span className="extra-value">{app.position || 'No especificado'}</span>
                       </div>
                     </div>
@@ -423,14 +373,14 @@ const MyApplications = () => {
                       className="view-details-btn"
                       onClick={() => setSelectedApplication(app)}
                     >
-                      👁️ Ver detalles
+                     Ver detalles
                     </button>
                     <button 
                       className="refresh-status-btn"
                       onClick={refreshData}
                       title="Actualizar datos"
                     >
-                      🔄 Actualizar
+                       Actualizar
                     </button>
                   </div>
                 </div>

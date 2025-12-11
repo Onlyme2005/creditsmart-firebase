@@ -5,9 +5,8 @@ import Home from './pages/Home';
 import Simulator from './pages/Simulator';
 import ScrollToTop from './components/ScrollToTop';
 import RequestCredit from './pages/RequestCredit';
-import MyApplications from './pages/MyApplications'; // NUEVA
+import MyApplications from './pages/MyApplications'; 
 import './App.css';
-import AddCredit from './components/AddCredit';
 
 function App() {
   return (
@@ -20,13 +19,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/simulator" element={<Simulator />} />
             <Route path="/request" element={<RequestCredit />} />
-            <Route path="/myapplications" element={<MyApplications />} /> {/* NUEVA */}
-            <Route path="/AddCredit" element={<AddCredit />} />
+            <Route path="/myapplications" element={<MyApplications />} /> 
+
           </Routes>
         </main>
         <footer className="footer">
           <p>© 2025 CreditSmart - Brislleily Carmona </p>
-          <p>Desarrollado para Ingeniería Web I</p>
+          <p>S40 - EA3: Integración con Backend Firebase</p>
         </footer>
       </div>
     </Router>

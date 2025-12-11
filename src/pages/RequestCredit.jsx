@@ -60,7 +60,7 @@ const RequestCredit = () => {
           setMonthlyPayment(principal / months);
         } else {
           const payment = (principal * rate * Math.pow(1 + rate, months)) / 
-                         (Math.pow(1 + rate, months) - 1);
+            (Math.pow(1 + rate, months) - 1);
           setMonthlyPayment(payment);
         }
       }
@@ -163,7 +163,7 @@ const RequestCredit = () => {
       
     } catch (error) {
       console.error("Error saving application:", error);
-      setFirebaseError("❌ Error al guardar la solicitud. Por favor, intenta nuevamente.");
+      setFirebaseError("Error al guardar la solicitud. Por favor, intenta nuevamente.");
     } finally {
       setLoading(false);
     }
@@ -194,7 +194,7 @@ const RequestCredit = () => {
   return (
     <div className="request-container">
       <header className="request-header">
-        <h1>📝 Solicitar Crédito</h1>
+        <h1>SOLICITAR CRÉDITO</h1>
         <p>Completa el formulario para solicitar tu crédito</p>
         
       </header>
@@ -221,8 +221,8 @@ const RequestCredit = () => {
           <p>{firebaseError}</p>
         </div>
       )}
-      
-      {showSummary ? (
+ 
+    {showSummary ? ( 
         <div className="summary-section">
           <h2>📄 Resumen de Solicitud</h2>
           <div className="summary-details">
@@ -271,11 +271,11 @@ const RequestCredit = () => {
                 <span className="summary-label">Ingreso mensual:</span>
                 <span className="summary-value">${Number(formData.monthlyIncome).toLocaleString()}</span>
               </div>
-            </div>
+            </div> 
             
             {monthlyPayment > 0 && (
               <div className="payment-summary">
-                <h3>💰 Cuota mensual estimada:</h3>
+                <h3>Cuota mensual estimada:</h3>
                 <div className="payment-amount-display">
                   <span className="payment-value">${monthlyPayment.toFixed(2)}</span>
                   <span className="payment-period">/ mes</span>
@@ -308,8 +308,7 @@ const RequestCredit = () => {
           {/* Sección 1: Datos Personales */}
           <fieldset className="form-section">
             <legend className="section-title">
-              <span className="section-icon">👤</span>
-              Datos Personales
+              DATOS PERSONALES...
             </legend>
             
             <div className="form-group">
@@ -390,8 +389,7 @@ const RequestCredit = () => {
           {/* Sección 2: Datos del Crédito */}
           <fieldset className="form-section">
             <legend className="section-title">
-              <span className="section-icon">💳</span>
-              Datos del Crédito
+              DATOS DEL CRÉDITO...
             </legend>
             
             <div className="form-group">
@@ -492,8 +490,7 @@ const RequestCredit = () => {
           {/* Sección 3: Datos Laborales */}
           <fieldset className="form-section">
             <legend className="section-title">
-              <span className="section-icon">💼</span>
-              Datos Laborales
+              DATOS LABORALES...
             </legend>
             
             <div className="form-row">
@@ -557,7 +554,7 @@ const RequestCredit = () => {
           {/* Cálculo de cuota mensual */}
           {monthlyPayment > 0 && calculatedCredit && (
             <div className="payment-calculator">
-              <h3>📊 Simulación de cuota mensual</h3>
+              <h3> Simulación de cuota mensual</h3>
               <div className="calculator-details">
                 <div className="calculator-row">
                   <span>Crédito seleccionado:</span>
@@ -598,7 +595,7 @@ const RequestCredit = () => {
               className="submit-btn"
               disabled={loading || loadingCredits}
             >
-              {loading ? '🔄 Procesando...' : '📤 Enviar Solicitud'}
+              {loading ? '🔄 Procesando...' : ' Enviar Solicitud'}
             </button>
             
             <button 
@@ -607,21 +604,13 @@ const RequestCredit = () => {
               className="clear-btn"
               disabled={loading}
             >
-              🗑️ Limpiar Formulario
-            </button>
-            
-            <button 
-              type="button" 
-              onClick={() => navigate('/simulator')}
-              className="simulator-btn"
-            >
-              🔍 Ir al Simulador
+              Limpiar Formulario
             </button>
           </div>
 
           {/* Información adicional */}
           <div className="form-info">
-            <p><strong>💡 Información importante:</strong></p>
+            <p><strong> ¡INFORMACIÓN IMPORTANTE!</strong></p>
             <ul>
               <li>Los campos marcados con * son obligatorios</li>
               <li>Podrás consultar el estado de tu solicitud en "Mis Solicitudes"</li>

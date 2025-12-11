@@ -4,7 +4,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
-    max-width: 325px;
+    max-width: 300px;
     margin: 1rem;
     }
 
@@ -48,7 +48,7 @@
 
 .interest-rate,  .term {
     display: flex;
-    grid-template-columns: 1fr 1fr; /* 2 columnas */
+    grid-template-columns: 1fr 1fr; 
     gap: 2rem;
     align-items: center;
     margin-bottom: 0.5rem;
