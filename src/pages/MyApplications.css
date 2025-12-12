@@ -25,7 +25,7 @@
   color: #3498db;
 }
 
-/* Search Section */
+
 .search-section {
   background: white;
   padding: 1.5rem;
@@ -72,7 +72,7 @@
   background-color: #2980b9;
 }
 
-/* User Info */
+
 .user-info {
   background-color: #e8f4fc;
   padding: 1rem;
@@ -85,7 +85,7 @@
   color: #27ae60;
 }
 
-/* Filters */
+/* Filtros */
 .filters-section {
   background: white;
   padding: 1.5rem;
@@ -165,7 +165,6 @@
   cursor: pointer;
 }
 
-/* Applications List */
 .applications-list {
   display: flex;
   flex-direction: column;

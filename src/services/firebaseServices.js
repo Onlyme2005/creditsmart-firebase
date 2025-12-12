@@ -1,12 +1,4 @@
-import { 
-  collection, 
-  addDoc, 
-  getDocs, 
-  query, 
-  where, 
-  orderBy,
-  Timestamp 
-} from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where, orderBy,Timestamp } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 // CRUD para Créditos

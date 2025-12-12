@@ -19,6 +19,15 @@
     border-radius: 0px 0px 10px 10px;
     }
 
+    .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    display: inline-block;
+}
     .banner h2 {
     font-size: 2.5rem;
     font-weight: 700;

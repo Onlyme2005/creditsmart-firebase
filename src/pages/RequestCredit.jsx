@@ -201,7 +201,7 @@ const RequestCredit = () => {
       
       {submitted && (
         <div className="success-message">
-          <div className="success-icon">✅</div>
+          <div className="success-icon"></div>
           <h3>¡Solicitud enviada exitosamente!</h3>
           <p>Tu solicitud ha sido guardada.</p>
           <p>Redirigiendo a "Mis Solicitudes" en 3 segundos...</p>
@@ -216,7 +216,7 @@ const RequestCredit = () => {
       
       {firebaseError && (
         <div className="error-message">
-          <div className="error-icon">❌</div>
+          <div className="error-icon"></div>
           <h3>Error</h3>
           <p>{firebaseError}</p>
         </div>
@@ -293,13 +293,13 @@ const RequestCredit = () => {
               className="confirm-btn"
               disabled={loading}
             >
-              {loading ? '🔄 Guardando...' : '✅ Confirmar y Guardar'}
+              {loading ? ' Guardando...' : 'Confirmar y Guardar'}
             </button>
             <button 
               onClick={() => setShowSummary(false)} 
               className="edit-btn"
             >
-              ✏️ Volver a editar
+               Volver a editar
             </button>
           </div>
         </div>
@@ -595,7 +595,7 @@ const RequestCredit = () => {
               className="submit-btn"
               disabled={loading || loadingCredits}
             >
-              {loading ? '🔄 Procesando...' : ' Enviar Solicitud'}
+              {loading ? 'Procesando...' : ' Enviar Solicitud'}
             </button>
             
             <button 

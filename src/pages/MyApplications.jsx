@@ -17,14 +17,14 @@ const MyApplications = () => {
   const [selectedApplication, setSelectedApplication] = useState(null);
   const [viewMode, setViewMode] = useState('all'); // 'all' o 'mine'
 
-  // Cargar TODAS las solicitudes desde Firebase
+  // Cargar todas las solicitudes desde Firebase
   useEffect(() => {
     const loadAllApplications = async () => {
       try {
         setLoading(true);
         setError(null);
         
-        // Usar la función que obtiene TODAS las aplicaciones
+        // Usar la función que obtiene todas las aplicaciones
         const allApps = await applicationService.getAllApplications();
         setApplications(allApps);
         
@@ -33,7 +33,7 @@ const MyApplications = () => {
         }
       } catch (err) {
         console.error("Error fetching all applications:", err);
-        setError("❌ Error al cargar las solicitudes. Verifica tu conexión.");
+        setError(" Error al cargar las solicitudes. Verifica tu conexión.");
       } finally {
         setLoading(false);
       }
@@ -271,11 +271,11 @@ const MyApplications = () => {
       {/* Mensaje de error */}
       {error && !loading && (
         <div className="error-container">
-          <div className="error-icon">❌</div>
+          <div className="error-icon"></div>
           <h3>Error al cargar solicitudes</h3>
           <p>{error}</p>
           <div className="error-actions">
-            <button onClick={refreshData}>🔄 Reintentar</button>
+            <button onClick={refreshData}> Reintentar</button>
           </div>
         </div>
       )}
@@ -312,7 +312,7 @@ const MyApplications = () => {
                     </div>
                    
                     <span className="application-date">
-                      📅 {formatDate(app.date)}
+                      {formatDate(app.date)}
                     </span>
                   </div>
                   
@@ -401,13 +401,13 @@ const MyApplications = () => {
                   onClick={clearAllFilters}
                   className="clear-filters-btn"
                 >
-                  🗑️ Limpiar filtros
+                   Limpiar filtros
                 </button>
                 <button 
                   onClick={refreshData}
                   className="refresh-btn"
                 >
-                  🔄 Recargar datos
+                  Recargar datos
                 </button>
               </div>
             </div>
@@ -420,7 +420,7 @@ const MyApplications = () => {
         <div className="modal-overlay" onClick={() => setSelectedApplication(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>📄 Detalles completos de la solicitud</h2>
+              <h2> Detalles completos de la solicitud</h2>
               <button 
                 className="modal-close-btn"
                 onClick={() => setSelectedApplication(null)}
@@ -431,7 +431,7 @@ const MyApplications = () => {
             
             <div className="modal-body">
               <div className="modal-section">
-                <h3>👤 Información personal</h3>
+                <h3> Información personal</h3>
                 <div className="modal-grid">
                   <div className="modal-item">
                     <strong>Nombre completo:</strong> {selectedApplication.fullName}
@@ -449,7 +449,7 @@ const MyApplications = () => {
               </div>
               
               <div className="modal-section">
-                <h3>💳 Información del crédito</h3>
+                <h3> Información del crédito</h3>
                 <div className="modal-grid">
                   <div className="modal-item">
                     <strong>Tipo de crédito:</strong> {selectedApplication.creditType}
@@ -470,7 +470,7 @@ const MyApplications = () => {
               </div>
               
               <div className="modal-section">
-                <h3>💼 Información laboral</h3>
+                <h3> Información laboral</h3>
                 <div className="modal-grid">
                   <div className="modal-item">
                     <strong>Empresa:</strong> {selectedApplication.company}
@@ -485,7 +485,7 @@ const MyApplications = () => {
               </div>
               
               <div className="modal-section">
-                <h3>📊 Información del sistema</h3>
+                <h3>Información del sistema</h3>
                 <div className="modal-grid">
                   <div className="modal-item">
                     <strong>ID de solicitud:</strong> {selectedApplication.id}

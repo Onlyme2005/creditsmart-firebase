@@ -33,7 +33,7 @@ const Simulator = () => {
         }
       } catch (err) {
         console.error("Error fetching credits:", err);
-        setError("❌ Error al cargar los créditos. Por favor, intenta nuevamente.");
+        setError(" Error al cargar los créditos. Por favor, intenta nuevamente.");
       } finally {
         setLoading(false);
       }
@@ -112,7 +112,7 @@ const Simulator = () => {
       <div className="simulator-container">
         <div className="loading-spinner">
           <div className="spinner"></div>
-          <p>🔄 Cargando créditos...</p>
+          <p> Cargando créditos...</p>
           <p className="firebase-info">Conectando</p>
         </div>
       </div>
@@ -123,7 +123,7 @@ const Simulator = () => {
     return (
       <div className="simulator-container">
         <div className="error-message">
-          <h3>❌ Error de Conexión</h3>
+          <h3> Error de Conexión</h3>
           <p>{error}</p>
           <button onClick={() => window.location.reload()}>🔄 Reintentar</button>
           <p className="fallback-info">
@@ -345,7 +345,7 @@ const Simulator = () => {
 
             <div className="final-summary">
               <p>
-                🎯 Mostrando <strong>{filteredCredits.length}</strong> de <strong>{credits.length}</strong> productos crediticios
+                 Mostrando <strong>{filteredCredits.length}</strong> de <strong>{credits.length}</strong> productos crediticios
                 {activeFilters.search && ` para "${searchTerm}"`}
                 {activeFilters.amount && ` con monto máximo de $${amountRange.toLocaleString()}`}
                 {activeFilters.interest && ` con tasa máxima de ${interestRange}%`}
@@ -362,7 +362,7 @@ const Simulator = () => {
                   onClick={() => window.location.reload()}
                   className="summary-refresh-btn"
                 >
-                 Recargar datos
+                  Recargar datos
                 </button>
               </div>
             </div>

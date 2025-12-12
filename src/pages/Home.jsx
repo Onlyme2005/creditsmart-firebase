@@ -41,7 +41,7 @@ const Home = () => {
     return (
       <div className="home-container">
         <div className="error-message">
-          <h3>❌ Error</h3>
+          <h3> Error</h3>
           <p>{error}</p>
           <button onClick={() => window.location.reload()}>Reintentar</button>
         </div>
@@ -55,6 +55,8 @@ const Home = () => {
             <h2>Encuentra el crédito ideal para ti</h2>
             <p>Compara y solicita entre más de 5 tipos de crédito con las mejores tasas del mercado</p>
           </section>
+          
+          <h2 class="section-title">Catálogo de Créditos Disponibles</h2>
       
       <div className="credits-grid">
         {credits.map((credit) => (

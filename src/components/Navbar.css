@@ -1,6 +1,6 @@
     .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
     background: #243b55;
@@ -77,17 +77,16 @@
     font-size: 0.9rem;
     opacity: 0.9;
     }
-
+    
+    /*responsive*/
     @media (max-width: 768px) {
-
-    /* Navbar más compacta */
     .navbar {
         flex-direction: column;
         gap: 0.5rem;
         padding: 0.5rem 1rem;
     }
 
-    /* Logo más pequeño */
+
     .brand-text {
         font-size: 1.5rem;
     }
@@ -96,7 +95,7 @@
         font-size: 2rem;
     }
 
-    /* Menú visible pero comprimido */
+
     .navbar-menu {
         display: flex;
         gap: 1rem;
@@ -105,13 +104,12 @@
         padding: 0.3rem 0;
     }
 
-    /* Ítems más pequeños */
+
     .nav-link {
         font-size: 0.85rem;
         padding: 0.4rem 0.6rem;
     }
 
-    /* Iconos más pequeños */
     .nav-icon {
         font-size: 0.9rem;
     }
