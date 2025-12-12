@@ -54,3 +54,4 @@ Hacer clic derecho en index.html y seleccionar "Open with Live Server"
 El proyecto se abrirá en http://localhost:5500 o puerto alguno parecido
 
 CAPTURAS DE PANTALLA:
+https://drive.google.com/drive/folders/1wSaCD3VpwbqJ8FAGyH0zt03uEcqt4wj_?usp=sharing
